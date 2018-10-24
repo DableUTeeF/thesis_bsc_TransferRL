@@ -1,0 +1,25 @@
+\begin{thebibliography}{1}
+
+\bibitem{Imagenet}
+{\sc Deng, J. e.~a.}
+\newblock Imagenet: A large-scale hierarchical image database.
+
+\bibitem{AlphaGo}
+{\sc Silver, D., Huang, A., Maddison, C.~J., Guez, A., Sifre, L., van~den
+  Driessche, G., Schrittwieser, J., Antonoglou, I., Panneershelvam, V.,
+  Lanctot, M., Dieleman, S., Grewe, D., Nham, J., Kalchbrenner, N., Sutskever,
+  I., Lillicrap, T., Leach, M., Kavukcuoglu, K., Graepel, T., and Hassabis, D.}
+\newblock Mastering the game of go with deep neural networks and tree search.
+\newblock {\em Nature 529\/} (2016), 484--489.
+
+\bibitem{AlphaZero}
+{\sc Silver, D. e.~a.}
+\newblock Mastering chess and shogi by self-play with a general reinforcement
+  learning algorithm.
+
+\bibitem{AlphaGoZero}
+{\sc Silver, D. e.~a.}
+\newblock Mastering the game of go without human knowledge.
+\newblock {\em Nature 550\/}, 354--359.
+
+\end{thebibliography}

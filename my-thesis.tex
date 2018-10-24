@@ -1,0 +1,54 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{makeidx} 
+\makeindex
+
+\usepackage{setspace}
+\usepackage{fancyhdr}
+
+\usepackage{xltxtra}
+\usepackage{polyglossia}
+\usepackage[top=25mm, bottom=20mm, left=25mm, right=20mm]{geometry}
+\XeTeXlinebreaklocale "th"
+\XeTeXlinebreakskip = 0pt plus 1pt
+\defaultfontfeatures{Scale=1.23}
+\title{Transferable Reinforcement Learning for Board Games}
+\author{Natthaphon Hongcharoen}
+%% ใช้ร่วมกับ polyglossia เพื่อให้ได้วันที่ภาษาไทย
+\setdefaultlanguage{thai}
+\newfontfamily{\thaifont}[Script=Thai]{TH SarabunPSK}
+
+\begin{document}
+\fontspec[
+ItalicFont={TH SarabunPSK Italic},
+BoldFont={TH SarabunPSK Bold},
+BoldItalicFont={TH SarabunPSK Bold Italic},
+]{TH SarabunPSK}
+
+\begin{titlepage}
+	\centering
+	\includegraphics[width=0.15\textwidth]{logo.png}\par\vspace{1cm}
+	{\scshape\Huge Transferable Reinforcement Learning for \par Board Games\par}
+	\vfill
+	{\Large\itshape Natthaphon Hongcharoen\par}
+	\vfill
+	{\Large  \par}
+	{\large Thesis presented for Faculty of Engineering and Technology \par\vspace{0.1cm}}
+	{\large Panyapiwat Insitute of Management\par\vspace{0.1cm}}
+	{\large In study of bachelor of science, Computer Engineering
+	}
+
+	%\vfill
+
+	% Bottom of the page
+	{\large Study year 2018 \par}
+\end{titlepage}
+
+\clearpage % End title page
+\pagestyle{empty}  % No headers or footers for the following pages
+
+\section*{Abstract}
+The modern Reinforcement Learning has become widely interested recently, after the AlphaGo\cite{AlphaGo} became the first program to defeat a world champion in the game of Go. And by 2017, the AlphaGoZero\cite{AlphaGoZero} and AlphaZero\cite{AlphaZero} programs achieved superhuman performance in the game of Go and Chess, by solely trained from games of self-play which require no human knowledge. But in contrast, both AlphaGoZero and AlphaZero required extremely powerful processor as they need to random move in the early state of training which cost more expend. While in Computer Vision domain, we often use pretrained model from large dataset such as Imagenet\cite{Imagenet} and retrain it for desired task which cost less time and achieved more accuracy than train it from scratch. In this thesis, we experiment a method to reuse the trained model of a game such as Othello, Connect4 or Gomoku and re-training with one different game by hoping it to be faster.
+\bibliographystyle{acm}
+\bibliography{testBibXeTex}
+
+\end{document}
