@@ -1,8 +1,10 @@
 \begin{thebibliography}{1}
 
 \bibitem{Imagenet}
-{\sc Deng, J. e.~a.}
+{\sc Deng, J., Dong, W., Socher, R., Li, L.-J., Li, K., and Fei-Fei, L.}
 \newblock Imagenet: A large-scale hierarchical image database.
+\newblock {\em 2009 IEEE Conference on Computer Vision and Pattern
+  Recognition\/} (2009).
 
 \bibitem{AlphaGo}
 {\sc Silver, D., Huang, A., Maddison, C.~J., Guez, A., Sifre, L., van~den
@@ -13,12 +15,16 @@
 \newblock {\em Nature 529\/} (2016), 484--489.
 
 \bibitem{AlphaZero}
-{\sc Silver, D. e.~a.}
+{\sc Silver, D., Hubert, T., Schrittwieser, J., Antonoglou, I., Lai, M., Guez,
+  A., Lanctot, M., Sifre, L., Kumaran, D., Graepel, T., Lillicrap, T.,
+  Simonyan, K., and Hassabis, D.}
 \newblock Mastering chess and shogi by self-play with a general reinforcement
   learning algorithm.
 
 \bibitem{AlphaGoZero}
-{\sc Silver, D. e.~a.}
+{\sc Silver, D., Schrittwieser, J., Simonyan, K., Antonoglou, I., Guez, A.
+  H.~A., Hubert, T., Baker, L., Lai, M., Bolton, A., Chen, Y., Lillicrap, T.,
+  Hui, F., Sifre, L., van~den Driessche, G., Graepel, T., and Hassabis, D.}
 \newblock Mastering the game of go without human knowledge.
 \newblock {\em Nature 550\/}, 354--359.
 
