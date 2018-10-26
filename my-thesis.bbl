@@ -6,6 +6,17 @@
 \newblock {\em 2009 IEEE Conference on Computer Vision and Pattern
   Recognition\/} (2009).
 
+\bibitem{GovsCom}
+{\sc Levinovitz, A.}
+\newblock The mystery of go, the ancient game that computers still can't win.
+\newblock https://www.wired.com/2014/05/the-world-of-computer-go/, 2014.
+
+\bibitem{GCP}
+{\sc Pascutto, G.-C.}
+\newblock [computer-go] zero performance.
+\newblock
+  http://computer-go.org/pipermail/computer-go/2017-October/010307.html, 2017.
+
 \bibitem{AlphaGo}
 {\sc Silver, D., Huang, A., Maddison, C.~J., Guez, A., Sifre, L., van~den
   Driessche, G., Schrittwieser, J., Antonoglou, I., Panneershelvam, V.,
@@ -16,16 +27,17 @@
 
 \bibitem{AlphaZero}
 {\sc Silver, D., Hubert, T., Schrittwieser, J., Antonoglou, I., Lai, M., Guez,
-  A., Lanctot, M., Sifre, L., Kumaran, D., Graepel, T., Lillicrap, T.,
+  A., Lanctot, M., Sifre, L., Kumaran, D., Graepel, T., Lillicrap, T.~P.,
   Simonyan, K., and Hassabis, D.}
 \newblock Mastering chess and shogi by self-play with a general reinforcement
   learning algorithm.
+\newblock {\em CoRR abs/1712.01815\/} (2017).
 
 \bibitem{AlphaGoZero}
 {\sc Silver, D., Schrittwieser, J., Simonyan, K., Antonoglou, I., Guez, A.
   H.~A., Hubert, T., Baker, L., Lai, M., Bolton, A., Chen, Y., Lillicrap, T.,
   Hui, F., Sifre, L., van~den Driessche, G., Graepel, T., and Hassabis, D.}
 \newblock Mastering the game of go without human knowledge.
-\newblock {\em Nature 550\/}, 354--359.
+\newblock {\em Nature 550\/} (2017), 354--359.
 
 \end{thebibliography}
