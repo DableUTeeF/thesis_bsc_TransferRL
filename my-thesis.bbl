@@ -1,43 +1,143 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
+
+\bibitem{TFpaper}
+{\sc M.~Abadi, A.~Agarwal, P.~Barham, E.~Brevdo, Z.~Chen, C.~Citro, G.~S.
+  Corrado, A.~Davis, J.~Dean, M.~Devin, S.~Ghemawat, I.~J. Goodfellow, A.~Harp,
+  G.~Irving, M.~Isard, Y.~Jia, R.~Jozefowicz, L.~Kaiser, M.~Kudlur,
+  J.~Levenberg, D.~Mane, R.~Monga, S.~Moore, D.~G. Murray, C.~Olah,
+  M.~Schuster, J.~Shlens, B.~Steiner, I.~Sutskever, K.~Talwar, P.~A. Tucker,
+  V.~Vanhoucke, V.~Vasudevan, F.~B. Viegas, O.~Vinyals, P.~Warden,
+  M.~Wattenberg, M.~Wicke, Y.~Yu, and X.~Zheng}, {\em Tensorflow: Large-scale
+  machine learning on heterogeneous distributed systems}, CoRR, abs/1603.04467
+  (2016).
+
+\bibitem{AISearching}
+{\sc L.~V. Allis}, {\em Searching for solutions in games and artificial
+  intelligence}, 1994.
+
+\bibitem{Bouzy_2004}
+{\sc B.~Bouzy and B.~Helmstetter}, {\em Monte-carlo go developments}, in
+  Advances in Computer Games, Springer {US}, 2004, pp.~159--174.
+
+\bibitem{BuroOth}
+{\sc M.~Buro}, {\em From simple features to sophisticated evaluation
+  functions}, in Proceedings of the First International Conference on Computers
+  and Games, CG '98, London, UK, UK, 1999, Springer-Verlag, pp.~126--145.
+
+\bibitem{DeepBlue}
+{\sc M.~Campbell, A.~J. Hoane, Jr., and F.-h. Hsu}, {\em Deep blue}, Artif.
+  Intell., 134 (2002), pp.~57--83.
+
+\bibitem{Keras}
+{\sc F.~Chollet}, {\em Keras deep learning for humans}.
+\newblock http://keras.io/.
+
+\bibitem{CoulomMCTS}
+{\sc R.~Coulom}, {\em Efficient selectivity and backup operators in monte-carlo
+  tree search}, in Proceedings of the 5th International Conference on Computers
+  and Games, CG'06, Berlin, Heidelberg, 2007, Springer-Verlag, pp.~72--83.
 
 \bibitem{Imagenet}
-{\sc Deng, J., Dong, W., Socher, R., Li, L.-J., Li, K., and Fei-Fei, L.}
-\newblock Imagenet: A large-scale hierarchical image database.
-\newblock {\em 2009 IEEE Conference on Computer Vision and Pattern
-  Recognition\/} (2009).
+{\sc J.~Deng, W.~Dong, R.~Socher, L.-J. Li, K.~Li, and L.~Fei-Fei}, {\em
+  Imagenet: A large-scale hierarchical image database}, 2009 IEEE Conference on
+  Computer Vision and Pattern Recognition,  (2009).
+
+\bibitem{Pytorch}
+{\sc Facebook}, {\em Tensors and dynamic neural networks in python with strong
+  gpu acceleration}.
+\newblock http://pytorch.org/.
+
+\bibitem{ReLU}
+{\sc R.~H.~R. Hahnloser, R.~Sarpeshkar, M.~A. Mahowald, R.~J. Douglas, and
+  H.~S. Seung}, {\em Digital selection and analogue amplification coexist in a
+  cortex-inspired silicon circuit}, Nature, 405 (2000), pp.~947--951.
+
+\bibitem{ResNet}
+{\sc K.~He, X.~Zhang, S.~Ren, and J.~Sun}, {\em Deep residual learning for
+  image recognition}, in 2016 IEEE Conference on Computer Vision and Pattern
+  Recognition (CVPR), June 2016, pp.~770--778.
+
+\bibitem{BN}
+{\sc S.~Ioffe and C.~Szegedy}, {\em Batch normalization: Accelerating deep
+  network training by reducing internal covariate shift}, in Proceedings of the
+  32Nd International Conference on International Conference on Machine Learning
+  - Volume 37, ICML'15, JMLR.org, 2015, pp.~448--456.
+
+\bibitem{KocsisMCTS}
+{\sc L.~Kocsis and C.~Szepesvari}, {\em Bandit based monte-carlo planning}, in
+  Proceedings of the 17th European Conference on Machine Learning, ECML'06,
+  Berlin, Heidelberg, 2006, Springer-Verlag, pp.~282--293.
+
+\bibitem{CNNpaper}
+{\sc Y.~LeCun}, {\em Gradient-based learning applied to document recognition},
+  1986.
 
 \bibitem{GovsCom}
-{\sc Levinovitz, A.}
-\newblock The mystery of go, the ancient game that computers still can't win.
+{\sc A.~Levinovitz}, {\em The mystery of go, the ancient game that computers
+  still can't win}.
 \newblock https://www.wired.com/2014/05/the-world-of-computer-go/, 2014.
 
+\bibitem{MullerComGo}
+{\sc M.~Muller}, {\em Computer go}, Artif. Intell., 134 (2002), pp.~145--179.
+
 \bibitem{GCP}
-{\sc Pascutto, G.-C.}
-\newblock [computer-go] zero performance.
+{\sc G.-C. Pascutto}, {\em [computer-go] zero performance}.
 \newblock
   http://computer-go.org/pipermail/computer-go/2017-October/010307.html, 2017.
 
+\bibitem{Thegamesplay}
+{\sc J.~Schaeffer}, {\em The games computers (and people) play}, Advances in
+  Computers, 52 (2000), pp.~189--266.
+
+\bibitem{Caliber}
+{\sc J.~Schaeffer, J.~Culberson, N.~Treloar, B.~Knight, P.~Lu, and D.~Szafron},
+  {\em A world championship caliber checkers program}, Artificial Intelligence,
+  53 (1992), pp.~273 -- 289.
+
+\bibitem{Scrabble}
+{\sc B.~Sheppard}, {\em World-championship-caliber scrabble}, Artif. Intell.,
+  134 (2002), pp.~241--275.
+
+\bibitem{AGWeb}
+{\sc D.~Silver and D.~Hassabis}, {\em Alphago: Mastering the ancient game of go
+  with machine learning}.
+\newblock
+  https://ai.googleblog.com/2016/01/alphago-mastering-ancient-game-of-go.html,
+  2016.
+
 \bibitem{AlphaGo}
-{\sc Silver, D., Huang, A., Maddison, C.~J., Guez, A., Sifre, L., van~den
-  Driessche, G., Schrittwieser, J., Antonoglou, I., Panneershelvam, V.,
-  Lanctot, M., Dieleman, S., Grewe, D., Nham, J., Kalchbrenner, N., Sutskever,
-  I., Lillicrap, T., Leach, M., Kavukcuoglu, K., Graepel, T., and Hassabis, D.}
-\newblock Mastering the game of go with deep neural networks and tree search.
-\newblock {\em Nature 529\/} (2016), 484--489.
+{\sc D.~Silver, A.~Huang, C.~J. Maddison, A.~Guez, L.~Sifre, G.~van~den
+  Driessche, J.~Schrittwieser, I.~Antonoglou, V.~Panneershelvam, M.~Lanctot,
+  S.~Dieleman, D.~Grewe, J.~Nham, N.~Kalchbrenner, I.~Sutskever, T.~Lillicrap,
+  M.~Leach, K.~Kavukcuoglu, T.~Graepel, and D.~Hassabis}, {\em Mastering the
+  game of go with deep neural networks and tree search}, Nature, 529 (2016),
+  pp.~484--489.
 
 \bibitem{AlphaZero}
-{\sc Silver, D., Hubert, T., Schrittwieser, J., Antonoglou, I., Lai, M., Guez,
-  A., Lanctot, M., Sifre, L., Kumaran, D., Graepel, T., Lillicrap, T.~P.,
-  Simonyan, K., and Hassabis, D.}
-\newblock Mastering chess and shogi by self-play with a general reinforcement
-  learning algorithm.
-\newblock {\em CoRR abs/1712.01815\/} (2017).
+{\sc D.~Silver, T.~Hubert, J.~Schrittwieser, I.~Antonoglou, M.~Lai, A.~Guez,
+  M.~Lanctot, L.~Sifre, D.~Kumaran, T.~Graepel, T.~P. Lillicrap, K.~Simonyan,
+  and D.~Hassabis}, {\em Mastering chess and shogi by self-play with a general
+  reinforcement learning algorithm}, CoRR, abs/1712.01815 (2017).
 
 \bibitem{AlphaGoZero}
-{\sc Silver, D., Schrittwieser, J., Simonyan, K., Antonoglou, I., Guez, A.
-  H.~A., Hubert, T., Baker, L., Lai, M., Bolton, A., Chen, Y., Lillicrap, T.,
-  Hui, F., Sifre, L., van~den Driessche, G., Graepel, T., and Hassabis, D.}
-\newblock Mastering the game of go without human knowledge.
-\newblock {\em Nature 550\/} (2017), 354--359.
+{\sc D.~Silver, J.~Schrittwieser, K.~Simonyan, I.~Antonoglou, A.~H.~A. Guez,
+  T.~Hubert, L.~Baker, M.~Lai, A.~Bolton, Y.~Chen, T.~Lillicrap, F.~Hui,
+  L.~Sifre, G.~van~den Driessche, T.~Graepel, and D.~Hassabis}, {\em Mastering
+  the game of go without human knowledge}, Nature, 550 (2017), pp.~354--359.
+
+\bibitem{MCR}
+{\sc G.~Tesauro and G.~R. Galperin}, {\em On-line policy improvement using
+  monte-carlo search}, in Advances in Neural Information Processing Systems 9,
+  M.~C. Mozer, M.~I. Jordan, and T.~Petsche, eds., MIT Press, 1997,
+  pp.~1068--1074.
+
+\bibitem{Solved}
+{\sc H.~van~den Herik, J.~W.H.M.Uiterwijk, and J.~van Rijswijck}, {\em Games
+  solved: now and in the future}, Aritificial Intellegence, 134 (2002),
+  pp.~277--311.
+
+\bibitem{Transferable}
+{\sc J.~Yosinski, J.~Clune, Y.~Bengio, and H.~Lipson}, {\em How transferable
+  are features in deep neural networks?}, CoRR, abs/1411.1792 (2014).
 
 \end{thebibliography}
