@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2018.10.12)  30 OCT 2018 14:24
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2018.10.12)  7 NOV 2018 11:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -545,10 +545,10 @@ Package ifvtex Info: VTeX not detected.
 \Gm@layoutvoffset=\dimen157
 \Gm@dimlist=\toks26
 )
-(/usr/share/texlive/texmf-dist/tex/latex/polyglossia/gloss-thai.ldf
-File: gloss-thai.ldf polyglossia: module for thai
+(/usr/share/texlive/texmf-dist/tex/latex/polyglossia/gloss-english.ldf
+File: gloss-english.ldf polyglossia: module for english
 )
-Package polyglossia Info: Default language is thai.
+Package polyglossia Info: Default language is english.
 
 *************************************************
 * fontspec warning: "script-not-exist-latn"
@@ -574,11 +574,7 @@ Package polyglossia Info: Default language is thai.
 . with NFSS spec.: <->s*[1.23]"TH SarabunPSK/BI/OT:script=latn;language=DFLT;"
 . - 'bold italic small caps'  (bx/itsc) with NFSS spec.: 
 .................................................
-(./my-thesis.aux
-LaTeX Font Info:    Font shape `EU1/THSarabunPSK(0)/m/n' will be
-(Font)              scaled to size 14.75995pt on input line 2.
-\thai@year=\count139
-)
+(./my-thesis.aux)
 \openout1 = `my-thesis.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
@@ -693,7 +689,6 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\thai@year=\count140
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -731,47 +726,36 @@ LaTeX Font Info:    Font shape `EU1/THSarabunPSK(1)/m/n' will be
 (Font)              scaled to size 17.71193pt on input line 36.
 [1
 
-]
-LaTeX Font Info:    Font shape `EU1/THSarabunPSK(0)/m/n' will be
-(Font)              scaled to size 21.25432pt on input line 50.
-LaTeX Font Info:    Font shape `EU1/THSarabunPSK(0)/bx/n' will be
-(Font)              scaled to size 21.25432pt on input line 50.
- [1
+] [1
 
-]
-LaTeX Font Info:    Font shape `EU1/THSarabunPSK(0)/m/n' will be
-(Font)              scaled to size 17.71193pt on input line 55.
-LaTeX Font Info:    Font shape `EU1/THSarabunPSK(0)/bx/n' will be
-(Font)              scaled to size 17.71193pt on input line 55.
- [2
+] [2
 
 ] [3
 
-] [4] (./my-thesis.bbl
-
-LaTeX Font Warning: Font shape `EU1/THSarabunPSK(0)/m/sc' undefined
-(Font)              using `EU1/THSarabunPSK(0)/m/n' instead on input line 4.
-
+] [4]
 LaTeX Font Info:    Font shape `EU1/THSarabunPSK(1)/m/it' will be
-(Font)              scaled to size 14.75995pt on input line 10.
-LaTeX Font Info:    Font shape `EU1/THSarabunPSK(0)/m/sc' will be
-(Font)              scaled to size 14.75995pt on input line 15.
-[5
+(Font)              scaled to size 14.75995pt on input line 90.
+Missing character: There is no θ in font cmmi8!
+Missing character: There is no θ in font cmmi8!
+ [5
 
-]) [6] (./my-thesis.aux
-\thai@year=\count141
-)
+]
+LaTeX Font Info:    Font shape `EU1/THSarabunPSK(1)/bx/it' will be
+(Font)              scaled to size 14.75995pt on input line 99.
+ [6] (./my-thesis.bbl [7
+
+]) [8] (./my-thesis.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 15658 strings out of 493638
- 299806 string characters out of 6146795
- 319206 words of memory out of 5000000
- 18920 multiletter control sequences out of 15000+600000
- 7218 words of font info for 47 fonts, out of 8000000 for 9000
+ 15646 strings out of 493638
+ 299872 string characters out of 6146795
+ 324330 words of memory out of 5000000
+ 18904 multiletter control sequences out of 15000+600000
+ 7242 words of font info for 50 fonts, out of 8000000 for 9000
  1328 hyphenation exceptions out of 8191
  55i,4n,62p,10402b,226s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on my-thesis.pdf (7 pages).
+Output written on my-thesis.pdf (9 pages).

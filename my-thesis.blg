@@ -1,49 +1,49 @@
 This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: my-thesis.aux
-The style file: siam.bst
+The style file: ieeetr.bst
 Database file #1: testBibXeTex.bib
 Warning--entry type for "CNNpaper" isn't style-file defined
 --line 101 of file testBibXeTex.bib
-You've used 27 entries,
-            2030 wiz_defined-function locations,
-            679 strings with 9366 characters,
-and the built_in function-call counts, 11906 in all, are:
-= -- 1059
-> -- 786
+You've used 29 entries,
+            1876 wiz_defined-function locations,
+            670 strings with 9292 characters,
+and the built_in function-call counts, 8411 in all, are:
+= -- 726
+> -- 489
 < -- 0
-+ -- 314
-- -- 285
-* -- 1006
-:= -- 1909
-add.period$ -- 32
-call.type$ -- 27
-change.case$ -- 222
++ -- 176
+- -- 147
+* -- 653
+:= -- 1254
+add.period$ -- 30
+call.type$ -- 29
+change.case$ -- 28
 chr.to.int$ -- 0
-cite$ -- 27
-duplicate$ -- 441
-empty$ -- 765
-format.name$ -- 285
-if$ -- 2462
+cite$ -- 29
+duplicate$ -- 377
+empty$ -- 760
+format.name$ -- 147
+if$ -- 1993
 int.to.chr$ -- 0
-int.to.str$ -- 27
-missing$ -- 20
-newline$ -- 89
-num.names$ -- 56
-pop$ -- 233
+int.to.str$ -- 29
+missing$ -- 23
+newline$ -- 91
+num.names$ -- 31
+pop$ -- 108
 preamble$ -- 1
-purify$ -- 195
+purify$ -- 0
 quote$ -- 0
-skip$ -- 381
+skip$ -- 280
 stack$ -- 0
-substring$ -- 621
-swap$ -- 182
+substring$ -- 484
+swap$ -- 150
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 108
+type$ -- 0
 warning$ -- 0
-while$ -- 96
-width$ -- 29
-write$ -- 248
+while$ -- 71
+width$ -- 31
+write$ -- 274
 (There was 1 warning)
