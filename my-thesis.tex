@@ -1,22 +1,42 @@
-\documentclass[12pt,a4paper]{article}
+\documentclass[12pt,a4paper]{report}
 \usepackage{makeidx}
 \makeindex
-
+\usepackage{fontspec}
+\usepackage[utf8]{inputenc}
 \usepackage{setspace}
 \usepackage{fancyhdr}
 \usepackage{amsmath}
 \usepackage{tabto}
 \usepackage{xltxtra}
 \usepackage{polyglossia}
-\usepackage[top=25mm, bottom=20mm, left=25mm, right=20mm]{geometry}
+\usepackage[top=25mm, bottom=20mm, left=1.5in, right=20mm]{geometry}
 \XeTeXlinebreaklocale "th"
 \XeTeXlinebreakskip = 0pt plus 1pt
-\defaultfontfeatures{Scale=1.23}
+\defaultfontfeatures{Scale=1.33}
 \title{Transferable Reinforcement Learning for Board Games}
 \author{Natthaphon Hongcharoen}
 %% ใช้ร่วมกับ polyglossia เพื่อให้ได้วันที่ภาษาไทย
 \setdefaultlanguage{english}
-\newfontfamily{\thaifont}[Script=Thai]{TH SarabunPSK}
+%\newfontfamily{\thaifont}[Script=Thai]{TH SarabunPSK}
+%\newfontfamily{\engfont}[Script=English]{TH SarabunPSK}
+\setmainfont{TH SarabunPSK} 
+\setsansfont{TH SarabunPSK} 
+\setmonofont{TH SarabunPSK}
+
+\usepackage{sectsty}
+\chapterfont{\Large\centering}
+\chaptertitlefont{\Large\centering}
+\sectionfont{\large\selectfont}
+
+\pagestyle{empty}
+% Page number
+\pagenumbering{alph}
+\addto\captionsenglish{% Replace "english" with the language you use
+  \renewcommand{\contentsname}%
+    {Table of Contents}%
+  \renewcommand{\bibname}%
+    {References}%
+}
 
 \begin{document}
 \fontspec[
@@ -35,87 +55,162 @@ BoldItalicFont={TH SarabunPSK Bold Italic},
 	{\Large  \par}
 	{\large Thesis presented for Faculty of Engineering and Technology \par\vspace{0.1cm}}
 	{\large Panyapiwat Insitute of Management\par\vspace{0.1cm}}
-	{\large In study of bachelor of science, Computer Engineering
+        {\large As part of  Bachelor of Engineering\par\vspace{0.1cm}}
+	{\large Computer Engineering\par\vspace{0.1cm}}
+
+	{\large 2019
 	}
 
 	%\vfill
 
 	% Bottom of the page
-	{\large Studies year 2018 \par}
+	{\large Academic year 2018 \par}
 \end{titlepage}
 
-\clearpage % End title page
-\pagestyle{empty}  % No headers or footers for the following pages
+%\makeatletter 
+%\renewcommand{\@seccntformat}[1]{\csname the#1\endcsname\ } % space 
+%\makeatother
+\makeatletter
+\patchcmd{\@makechapterhead}{\vspace*{50\p@}}{}{}{}% Removes space above \chapter head
+\patchcmd{\@makeschapterhead}{\vspace*{50\p@}}{}{}{}% Removes space above \chapter* head
+\patchcmd{\@chapter}{\addtocontents{lof}{\protect\addvspace{10\p@}}}{}{}{}% LoF
+\patchcmd{\@chapter}{\addtocontents{lot}{\protect\addvspace{10\p@}}}{}{}{}% LoT
 
-\section*{Abstract}
-\tab\hspace{0.3cm}The modern Reinforcement Learning has become widely interested recently after the AlphaGo\cite{AlphaGo} became the first program to defeat a world champion in the game of Go. And by 2017, the AlphaGo Zero\cite{AlphaGoZero} and AlphaZero\cite{AlphaZero} programs achieved superhuman performance in the game of Go and Chess, by solely trained from games of self-play which require no human knowledge. But in contrast, both AlphaGo Zero and AlphaZero required extremely powerful processor as they need to random move in the early state of training which cost more expend. While in Computer Vision domain, we often use pre-trained model from large dataset such as Imagenet\cite{Imagenet} and retrain it for the desired task which cost less time and achieved more accuracy than train it from scratch. In this thesis, we experiment a method to reuse the trained model of a game such as Othello, Connect4 or Gomoku and re-training with one different game by hoping it to be faster.
+\makeatother
+
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\rhead{\thepage}
+\setcounter{page}{1}
+\setcounter{secnumdepth}{0}
+%\chapter{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+\begin{flushleft} KEY WORD: Reinforcement Learning, Deep Learning, Artificial Intelligent\par\end{flushleft}
+Mr. Natthaphon Hongcharoen: Transferable Reinforcement Learning for Board Games, ADVISOR: Assoc.Prof. Parinya Sanguansat, 18 pp.\par
+The modern Reinforcement Learning has become widely interested recently after the AlphaGo became the first program to defeat a world champion in the game of Go. And by 2017, the AlphaGo Zero programs achieved superhuman performance in the game of Go, by solely trained from games of self-play which require no human knowledge. But in contrast, both AlphaGo and AlphaGo Zero required extremely powerful processor and make them difficult to reproduce.\par
+While in Computer Vision domain, we often use a pre-trained model from large dataset and re-train it for the desired task which cost less time and achieved more performance than train from scratch.\par
+In this thesis, we create a Reinforcement Learning model for Connect4 game, then transfer the weights and re-train it for Othello game. To compare its performance against a model trained for Othello from the beginning.\par
+The result, the solely Othello model won against the transferred model in total 174 to 26.\par
+\vfill
+\begin{flushleft}
+Division Computer Engineering         \hfill Student's signature . . . . . . . . . . . . . . . . . . . . . .\par
+Faculty Engineering and Technology \hfill Advisor's signature. . . . . . . . . . . . . . . . . . . . . . .\par
+Academic year 2018\par
+\end{flushleft}
+\clearpage
+\setcounter{secnumdepth}{0}
+\chapter*{Acknowledgment}
+\addcontentsline{toc}{chapter}{Acknowledgment}
+{
+\hspace{0.6cm}This thesis was completed thank to training server support from National Electronics and Computer Technology Center, countless lines of example code and useful comments from GitHub and Stackoverflow.\par
+I would like to express my sincere gratitude to my advisor Assoc.Prof. Parinya Sanguansat and my mentor Sanparith Marukatat for the continuous support of my study and related research. \par
+\begin{flushright} 
+Natthaphon Hongcharoen\par
+March 2019
+\end{flushright}
+}
 \clearpage
 
-\section{Introduction}
-\subsection{Background}
+\tableofcontents\thispagestyle{fancy}
+\addcontentsline{toc}{chapter}{Table of Contents}
+\clearpage
+
+\listoffigures\thispagestyle{fancy}
+\addcontentsline{toc}{chapter}{List of Figures}
+
+\listoftables\thispagestyle{fancy}
+\addcontentsline{toc}{chapter}{List of Tables}
+
+\clearpage % End title page
+  % No headers or footers for the following pages
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\setcounter{secnumdepth}{1}
+
+\chapter{Introduction}\thispagestyle{fancy}
+\setcounter{secnumdepth}{2}
+\section{Background}
 {
-\hspace{0.6cm}The modern Reinforcement Learning such as AlphaGo has shown outstanding performance by winning against the world champion in the game of Go a decade earlier than predicted\cite{GovsCom}\cite{AGWeb}. And the AlphaGo Zero has shown that it possible to train Reinforcement Learning without any human knowledge while still achieved good performance\cite{AlphaGoZero}\cite{AlphaZero}. In contrast to the good result, for AlphaGo, by using ‘supervised learning from human expert games’\cite{AlphaGo} means it requires the expert games that might be difficult to obtained or in the worst case, it might be impossible to get. And in the case of AlphaGo Zero, according to original paper\cite{AlphaGoZero}, the model needs to be trained with 29 million games of self-play. Parameters were updated from 3.1 million mini-batches of 2,048 positions each. In Gian-Carlo Pascutto's experiments, every 2000 self-play moves generated by GTX-1080ti GPU would take 93 seconds, which means it needs 1700 years to play all 29 million games\cite{GCP}. It practically impossible to train AlphaGo Zero in personal level.\par
+\hspace{0.6cm}The modern Reinforcement Learning such as AlphaGo\cite{AlphaGo} has shown outstanding performance by winning against the world champion in the game of Go a decade earlier than predicted\cite{GovsCom}\cite{AGWeb}. And the AlphaGo Zero\cite{AlphaGoZero} has shown that it possible to train Reinforcement Learning without any human knowledge while still achieved good performance\cite{AlphaGoZero}\cite{AlphaZero}. In contrast to the good result, for AlphaGo, by using ‘supervised learning from human expert games’\cite{AlphaGo} means it requires the expert games that might be difficult to obtained or in the worst case, it might be impossible to get. And in the case of AlphaGo Zero, according to original paper\cite{AlphaGoZero}, the model needs to be trained with 29 million games of self-play. Parameters were updated from 3.1 million mini-batches of 2,048 positions each. In Gian-Carlo Pascutto's experiments, every 2000 self-play moves generated by GTX-1080ti GPU would take 93 seconds, which means it needs 1700 years to play all 29 million games\cite{GCP}. It practically impossible to train AlphaGo Zero in personal level.\par
 \hspace{0cm} Meanwhile in Computer Vision domain, transferring weights which pre-trained in large datasets and then re-train the model in the preferred dataset is a widely used method as there are ImageNet\cite{Imagenet} pre-trained weights in many popular libraries\cite{TFpaper}\cite{Pytorch}\cite{Keras}. The reason is it often improve regularizing and better performance\cite{Transferable}. In the same way, Transfer Learning should be able to use in Deep Reinforcement Learning algorithm which uses Deep Convolutional Neural Networks and help improve training speed and model's performance.\par
 }
-\subsection{Objective}
+\section{Objective}
 {
 \hspace{0.6cm} 1. Create Reinforcement Learning models for board games such as Othello, Connect4 or Gomoku with AlphaZero algorithm.\par
 \hspace{0cm} 2. Create Transferred Reinforcement Learning models from trained games.\par
 \hspace{0cm} 3. Evaluate Transferred models performance against normal models.\par
 }
-\subsection{Scope}
+\section{Scope}
 {
 \hspace{0.6cm} 1. Create at least 2 AlphaZero models and at least 2 Transferred models.\par
-\hspace{0cm} 2. Evaluate the performance of each algorithm in the same iteration and same version.
+\hspace{0cm} 2. Evaluate the performance of each algorithm in the same iteration and same version.\par
+}
+\section{Expected Usage}
+{
+\hspace{0.6cm} 1. Reinforcement Learning would much quicker to train if Transfer Learning is possible.\par
+\hspace{0cm}2. If transferring weights from difference games make sense, then it might be possible to create a single network that can do many task.
 }
 \clearpage
 
-\section{Related Works}
-\subsection{AlphaGo, Mastering the game of Go with deep neural networks and tree search}
+\chapter{Related Works}\thispagestyle{fancy}
+\section{AlphaGo, Mastering the game of Go with deep neural networks and tree search}
 {
 \hspace{0.6cm} By March 2016 DeepMind AlphaGo has become the first computer program to win against the world champion in the game of Go by defeated Lee Sedol, the winner of 18 world titles, which many years earlier than predicted\cite{GovsCom}\cite{AGWeb}. The AlphaGo introduced a new approach to computer Go that uses ‘value networks’ to evaluate board positions and ‘policy networks’ to select moves. These deep neural networks are trained by a novel combination of supervised learning from human expert games, and reinforcement learning from games of self-play. Without any lookahead search, the neural networks play Go at the level of state-of-the-art Monte Carlo tree search programs that simulate thousands of random games of self-play. DeepMind also introduces a new search algorithm that combines Monte Carlo simulation with value and policy networks. Using this search algorithm, AlphaGo achieved a 99.8\% winning rate against other Go programs and defeated the human European Go champion by 5 games to 0. This is the first time that a computer program has defeated a human professional player in the full-sized game of Go, a feat previously thought to be at least a decade away\cite{AlphaGo}.\par
 %\hspace{0cm} All games of perfect information have an optimal value function, \(v^*(s)\), which determines the outcome of the game, from every board position or state \(s\), under perfect play by all players. These games may be solved by recursively computing the optimal value function in a search tree containing approximately \(b^d\) possible sequences of moves, where b is the game’s breadth (number of legal moves per position) and \(d\) is its depth (game length). In large games, such as chess \((b\) ≈ \(35\), \(d\) ≈ \(80)\)\cite{AISearching} and especially Go \((b\) ≈ \(250\), \(d\) ≈ \(150)\)\cite{AISearching}, exhaustive search is infeasible\cite{Solved}\cite{Thegamesplay}, but the effective search space can be reduced by two general principles. First, the depth of the search may be reduced by position evaluation: truncating the search tree at state \(s\) and replacing the subtree below \(s\) by an approximate value function \(v(s)\) ≈ \(v^*(s)\) that predicts the outcome from state \(s\). This approach has led to superhuman performance in chess\cite{DeepBlue}, checkers\cite{Caliber} and othello\cite{BuroOth}, but it was believed to be intractable in Go due to the complexity of the game\cite{MullerComGo}. Second, the breadth of the search may be reduced by sampling actions from a policy \(p(a|s)\) that is a probability distribution over possible moves a in position \(s\). For example, Monte Carlo rollouts\cite{MCR} search to maximum depth without branching at all, by sampling long sequences of actions for both players from a policy p. Averaging over such rollouts can provide an effective position evaluation, achieving superhuman performance in backgammon\cite{MCR} and Scrabble\cite{Scrabble}, and weak amateur level play in Go\cite{Bouzy_2004}.\par
-\hspace{0cm} All abstract games have an optimal value function, \(v^*(s)\), which determines the outcome, who would win the game from every board position or state \(s\) if both players play perfectly. These games may be solved by recursively computing the outcome of every possible state, but in large games, such as chess\cite{AISearching} and especially Go\cite{AISearching}, Exhaustive Searching is infeasible\cite{Solved}\cite{Thegamesplay}, but the effective search space can be reduced by two general principles. First, the depth of the search may be reduced by position evaluation: truncating the search tree at state \(s\) and replacing the subtree below \(s\) by predicting the outcome from state \(s\) instead. This approach has led to superhuman performance in chess\cite{DeepBlue}, checkers\cite{Caliber} and othello\cite{BuroOth}, but it was believed to be intractable in Go due to the complexity of the game\cite{MullerComGo}. Second, the breadth of the search may be reduced by sampling actions from a policy \(p(a|s)\) that is a probability distribution over possible moves \(a\) in position \(s\). For example, Monte Carlo rollouts\cite{MCR} search to maximum depth without branching at all, by sampling long sequences of actions for both players from a policy \(p\). Averaging over such rollouts can provide an effective position evaluation, achieving superhuman performance in backgammon\cite{MCR} and Scrabble\cite{Scrabble}, and weak amateur level play in Go\cite{Bouzy_2004}.\par
+\hspace{0cm} All abstract games have an optimal value function, \(v^\ast(s)\), which determines the outcome, who would win the game from every board position or state \(s\) if both players play perfectly. These games may be solved by recursively computing the outcome of every possible state, but in large games, such as chess\cite{AISearching} and especially Go\cite{AISearching}, Exhaustive Searching is infeasible\cite{Solved}\cite{Thegamesplay}, but the effective search space can be reduced by two general principles. First, the depth of the search may be reduced by position evaluation: truncating the search tree at state \(s\) and replacing the subtree below \(s\) by predicting the outcome from state \(s\) instead. This approach has led to superhuman performance in chess\cite{DeepBlue}, checkers\cite{Caliber} and othello\cite{BuroOth}, but it was believed to be intractable in Go due to the complexity of the game\cite{MullerComGo}. Second, the breadth of the search may be reduced by sampling actions from a policy \(p(a|s)\) that is a probability distribution over possible moves \(a\) in position \(s\). For example, Monte Carlo rollouts\cite{MCR} search to maximum depth without branching at all, by sampling long sequences of actions for both players from a policy \(p\). Averaging over such rollouts can provide an effective position evaluation, achieving superhuman performance in backgammon\cite{MCR} and Scrabble\cite{Scrabble}, and weak amateur level play in Go\cite{Bouzy_2004}.\par
 \hspace{0cm} Monte Carlo tree search (MCTS)\cite{CoulomMCTS}\cite{KocsisMCTS} uses Monte Carlo rollouts to estimate the value of each state in a search tree. As more simulations are executed, the search tree grows larger and the relevant values become more accurate. The policy used to select actions during the search is also improved over time, by selecting children with higher values. Asymptotically, this policy converges to optimal play, and the evaluations converge to the optimal value function\cite{KocsisMCTS}. \par
 AlphaGo passes in the board position as a 19 × 19 image and use convolutional layers to construct a representation of the position. By using these neural networks to reduce the effective depth and breadth of the search tree: evaluating positions using a value network, and sampling actions using a policy network. The neural networks trained using a pipeline consisting of several stages of machine learning. Begin by training a supervised learning (SL) policy network \(p_\sigma\) directly from expert human moves. This provides fast, efficient learning updates with immediate feedback and high-quality gradients. And also train a fast policy \(p_\pi\) that can rapidly sample actions during rollouts. Next, train a reinforcement learning (RL) policy network \(p_\rho\) that improves the SL policy network by optimizing the final outcome of games of self-play. This adjusts the policy towards the correct goal of winning games, rather than maximizing predictive accuracy. Finally, train a value network \(v_\theta\) that predicts the winner of games played by the RL policy network against itself.\par
 }
-\subsection{AlphaGo Zero, Mastering the Game of Go without Human Knowledge}
+\section{AlphaGoZero, Mastering the Game of Go without Human Knowledge}
 
 \hspace{0.6cm} AlphaGo became the first program to defeat a world champion in the game of Go. The tree search in AlphaGo evaluated positions and selected moves using deep neural networks. These neural networks were trained by supervised learning from human expert moves, and by reinforcement learning from self-play. AlphaGo Zero introduced an algorithm based solely on reinforcement learning, without human data, guidance, or domain knowledge beyond game rules. AlphaGo becomes its own teacher: a neural network is trained to predict AlphaGo’s own move selections and also the winner of AlphaGo’s games. This neural network improves the strength of tree search, resulting in higher quality move selection and stronger self-play in the next iteration. Starting tabula rasa, AlphaGo Zero achieved superhuman performance, winning 100-0 against the previously published, champion-defeating AlphaGo.\par
 %\hspace{0cm} Much progress towards artificial intelligence has been made using supervised learning systems that are trained to replicate the decisions of human experts. However, expert data is often expensive, unreliable, or simply unavailable. Even when reliable data is available it may impose a ceiling on the performance of systems trained in this manner\cite{HayesExpert}.In contrast, reinforcement learning systems are trained from their own experience, in principle allowing them to exceed human capabilities, and to operate in domains where human expertise is lacking. Recently, there has been rapid progress towards this goal, using deep neural networks trained by reinforcement learning. These systems have outperformed humans in computer games such as Atari\cite{Humanlevel}\cite{Atari} and 3D virtual environments\cite{Asynchronous}.\par
 \hspace{0cm}AlphaGo Zero differs from first version AlphaGo in several important aspects. First and foremost, it is trained solely by self-play reinforcement learning, starting from random play, without any supervision or use of human data. Second, it only uses the black and white stones from the board as input features instead of many extracted features. Third, it uses a single neural network, rather than separate policy and value networks. Finally, it uses a simpler tree search that relies upon this single neural network to evaluate positions and sample moves, without performing any Monte-Carlo rollouts. To achieve these results, AlphaGo Zero introduced a new reinforcement learning algorithm that incorporates lookahead search inside the training loop, resulting in rapid improvement and precise and stable learning\cite{AlphaGoZero}.\par
 AlphaGo Zero uses a deep neural network \(f_\theta\) with parameters \(\theta\). This neural network takes an input as the raw board representation \(s\) of the position and its history and outputs both move probabilities and a value, \((p, v) = f_\theta(s)\). The vector of move probabilities \(p\) represents the probability of selecting each move (including pass), \(p_a = P_r(a|s)\). The value \(v\) is a scalar evaluation, estimating the probability of the current player winning from position \(s\). This neural network combines the roles of both policy network and value network\cite{AlphaGo} into a single architecture. The neural network consists of many residual blocks\cite{ResNet} of convolutional layers\cite{CNNpaper} with batch normalisation\cite{BN} and rectifier non-linearities\cite{ReLU} (see Methods).\par
 \clearpage
-\section{Methods}
-\subsection{Reinforcement Learning}
+\chapter{Methods}\thispagestyle{fancy}
+\section{Reinforcement Learning}
 \hspace{0.6cm}Our methods based on AlphaGo Zero's Reinforcement Learning algorithm. The neural network is trained from games of self-play by a novel reinforcement learning algorithm. 
-%In each position \(s\), an MCTS search is executed, guided by the neural network \(f_\theta\). The MCTS search outputs probabilities \(\pi\) of playing each move. These search probabilities usually select much stronger moves than the raw move probabilities \(p\) of the neural network \(f_\theta(s)\); MCTS may therefore be viewed as a powerful \textit{policy improvement} operator\cite{Howard}. Self-play with search using the improved MCTS-based policy to select each move, then using the game winner \(z\) as a sample of the value may be viewed as a powerful \textit{policy evaluation} operator. The main idea of AlphaGo Zero reinforcement learning algorithm is to use these search operators repeatedly in a policy iteration procedure: the neural network’s parameters are updated to make the move probabilities and value \((p, v) = f_\theta(s)\) more closely match the improved search probabilities and self-play winner \((\pi, z)\); these new parameters are used in the next iteration of self-play to make the search even stronger. The Monte-Carlo tree search uses the neural network \(f_\theta\) to guide its simulations. Each edge \((s, a)\) in the search tree stores a prior probability \(P(s, a)\), a visit count \(N(s, a)\), and an action-value \(Q(s, a)\). Each simulation starts from the root state and iteratively selects moves that maximise an upper confidence bound \(Q(s, a) + U(s, a)\), where \(U(s, a) \propto P(s, a)/(1 + N(s, a))\)\cite{AlphaGo}, until a leaf node \(s'\) is encountered. This leaf position is expanded and evaluated just once by the network to generate both prior probabilities and evaluation, \((P(s', ·), V(s')) = f_θ (s')\). Each edge \((s, a)\) traversed in the simulation is updated to increment its visit count \(N(s, a)\), and to \(P\) update its action-value to the mean evaluation over these simulations, \(Q(s, a) = 1/N(s, a) \sum_{s'|s,a\to s'}V(s')\), where \(s,a\to s'\) indicates that a simulation eventually reached \(s'\) after taking move a from position \(s\).\par
-In each state \(s\) of game, an MCTS search is executed, guided by the neural network \(f_\theta\) . The MCTS search outputs probabilities \(\pi\) of playing each move (See Fig.1). These search probabilities usually select much stronger moves than the raw move probabilities \(p\) of of the neural network \(f_\theta(s)\). The neural network’s parameters are updated to make the predicted move probabilities and value \((p, v) = f_\theta(s)\) more closely match the MCTS improved search probabilities and self-play winner \((\pi, z)\); these new parameters are used in the next iteration of self-play. The Monte-Carlo tree search uses the neural network \(f_\theta\) to guide its simulations. Each edge \((s, a)\) in the search tree stores a prior probability \(P(s, a)\), a visit count \(N(s, a)\), and an action-value \(Q(s, a)\). Each simulation starts from the root state and iteratively selects moves that maximise an upper confidence bound \(Q(s, a) + U(s, a)\), where \(U(s, a) \propto P(s, a)/(1 + N(s, a))\)\cite{AlphaGo}, until a leaf node \(s'\) is encountered. This leaf position is expanded and evaluated just once by the network to generate both prior probabilities and evaluation, \((P(s', ·), V(s')) = f_θ (s')\). Each edge \((s, a)\) traversed in the simulation is updated to increment its visit count \(N(s, a)\), and to \(P\) update its action-value to the mean evaluation over these simulations, \(Q(s, a) = 1/N(s, a) \sum_{s'|s,a\to s'}V(s')\), where \(s,a\to s'\) indicates that a simulation eventually reached \(s'\) after taking move a from position \(s\) (See Fig.2).\par
-The neural network is trained by a self-play reinforcement learning algorithm that uses MCTS to play each move. First, the neural network is initialized to random weights \(\theta_0\). At each subsequent iteration \(i \geq 1\), games of self-play are generated. At each time-step \(t\), an MCTS search \(\pi_t = \alpha_{\theta_{i−1}}(s_t)\) is executed using the previous iteration of neural network \(f_{\theta_{i−1}}\), and a move is played by sampling the search probabilities \(\pi_t\). A game terminates at step \(T\) when both players pass, when the search value drops below a resignation threshold, or when the game exceeds a maximum length; the game is then scored to give a final reward of \(r_T \in \{−1, +1\}\). The data for each time-step \(t\) is stored as \((s_t, \pi_t, z_t)\) where \(z_t = \pm r_T\) is the game winner from the perspective of the current player at step \(t\). In parallel, new network parameters \(\theta_i\) are trained from data \((s, \pi, z)\) sampled uniformly among all time-steps of the last iteration(s) of self-play. The neural network \((p, v) = f_{\theta_i}(s)\) is adjusted to minimize the error between the predicted value \(v\) and the self-play winner \(z\), and to maximise the similarity of the neural network move probabilities \(p\) to the search probabilities \(\pi\) . Specifically, the parameters \(\theta\) are adjusted by gradient descent on a loss function \(l\) that sums over mean-squared error and cross-entropy losses respectively,\par
+In each state \(s\) of game, an MCTS search is executed, guided by the neural network \(f_\theta\). The MCTS search outputs probabilities \(\pi\) of playing each move (See Fig.1). These search probabilities usually select much stronger moves than the raw move probabilities \(p\) of of the neural network \(f_\theta(s)\). The neural network’s parameters are updated to make the predicted move probabilities and value \((p, v) = f_\theta(s)\) more closely match the MCTS improved search probabilities and self-play winner \((\pi, z)\); these new parameters are used in the next iteration of self-play. The Monte-Carlo tree search uses the neural network \(f_\theta\) to guide its simulations. The MCTS here is identical to the one used in AlphaGo Zero paper.
+\textit{Each edge \((s, a)\) in the search tree stores a prior probability \(P(s, a)\), a visit count \(N(s, a)\), and an action-value \(Q(s, a)\). Each simulation starts from the root state and iteratively selects moves that maximise an upper confidence bound \(Q(s, a) + U(s, a)\), where \(U(s, a) \propto P(s, a)/(1 + N(s, a))\)\cite{AlphaGo}, until a leaf node \(s'\) is encountered. This leaf position is expanded and evaluated just once by the network to generate both prior probabilities and evaluation, \((P(s', ·), V(s')) = f_θ (s')\). Each edge \((s, a)\) traversed in the simulation is updated to increment its visit count \(N(s, a)\), and to \(P\) update its action-value to the mean evaluation over these simulations, \(Q(s, a) = 1/N(s, a) \sum_{s'|s,a\to s'}V(s')\), where \(s,a\to s'\) indicates that a simulation eventually reached \(s'\) after taking move a from position \(s\)} (See Fig.2).\par
+%The neural network is trained by a self-play reinforcement learning algorithm that uses MCTS to play each move. First, the neural network is initialized to random weights \(\theta_0\). At each subsequent iteration \(i \geq 1\), games of self-play are generated. At each time-step \(t\), an MCTS search \(\pi_t = \alpha_{\theta_{i−1}}(s_t)\) is executed using the previous iteration of neural network \(f_{\theta_{i−1}}\), and a move is played by sampling the search probabilities \(\pi_t\). A game terminates at step \(T\) when both players pass, when the search value drops below a resignation threshold, or when the game exceeds a maximum length; the game is then scored to give a final reward of \(r_T \in \{−1, +1\}\). The data for each time-step \(t\) is stored as \((s_t, \pi_t, z_t)\) where \(z_t = \pm r_T\) is the game winner from the perspective of the current player at step \(t\). In parallel, new network parameters \(\theta_i\) are trained from data \((s, \pi, z)\) sampled uniformly among all time-steps of the last iteration(s) of self-play. The neural network \((p, v) = f_{\theta_i}(s)\) is adjusted to minimize the error between the predicted value \(v\) and the self-play winner \(z\), and to maximise the similarity of the neural network move probabilities \(p\) to the search probabilities \(\pi\) . Specifically, the parameters \(\theta\) are adjusted by gradient descent on a loss function \(l\) that sums over mean-squared error and cross-entropy losses respectively,\par
+The neural network is trained by a self-play reinforcement learning algorithm that uses MCTS to play each move. First, the neural network is initialized to random weights \(\theta_0\). At each subsequent iteration \(i\), games of self-play are generated by MCTS using the previous iteration of neural network \(f_{\theta_{i−1}}\). A game terminates when both players have no available move left. The game is then scored to give a final reward of \(z_t \in \{−1, +1\}\), \(1\) if the current player wins or \(-1\) if the current player loses. The state \(s\), search probabilities \(\pi\) and game reward \(z\) for each time-step \(t\) are stored. The neural network parameters \(\theta_i\) are trained from data \((s, \pi, z)\) sampled uniformly among all time-steps of the last iteration(s) of self-play to maximise the similarity of the neural network move probabilities \(p\) to the MCTS search probabilities \(\pi\). The network parameters \(\theta\) are adjusted by gradient descent on a loss function \(l\) that sums over mean-squared error and cross-entropy losses respectively,\par
 \begin{flushleft}\hspace{4.5cm} \((p, v) = f_θ(s),\)\hspace{1cm}\(l = (z − v)^2 − \pi^\top \log p\)\hfill(1) \end{flushleft} \par
-We applied our reinforcement learning pipeline to train our programs. The base neural networks model started training from completely random behavior and continued without human intervention over 50 iterations for 512 games each, in total 25,600 games, using 25 simulations for each MCTS. Parameters were updated using Adaptive Moment Estimation\cite{Adam} from recent 20 iterations play history with 4,096 mini-batch size(See Training Pipeline for more detail). The neural network contained 256 × 4 residual blocks(See Neural Network Architecture for more detail). This is very few numbers compare to 4.9 million games and 1,600 MCTS simulations in original AlphaGo and AlphaGo Zero but it still took more than 10 days on a single K80 card.\par
+We applied our reinforcement learning pipeline to train our programs. The base neural networks model started training from completely random behavior and continued without human intervention over 50 iterations for 512 games each, in total 25,600 games, using 25 simulations for each MCTS. Parameters were updated using Adaptive Moment Estimation\cite{Adam} from recent 20 iterations play history with 4,096 mini-batch size(See Training Pipeline for more detail). The neural network contained 256 × 4 residual blocks(See Neural Network Architecture for more detail). %This is very few numbers compare to 4.9 million games and 1,600 MCTS simulations in original AlphaGo and AlphaGo Zero but it still took more than 10 days on a single K80 card.\par
 \clearpage
-
+\begin{center}
 \includegraphics[width=0.75\textwidth]{Othboard.png}\par
+\end{center}
 \begin{small}
-Figure 1: MCTS search outputs explanation. \textit{\textbf{Top Left}}: A state of Othello game after 2 moves, red dots are valid moves. \textit{\textbf{Top Right}}: MCTS outputs for first 15 moves of each game, the Probability of move are sparse, this means the training model has 20\% chance to select the leftmost valid square or 44\% for the middle square, this ensures a diverse set of positions are encountered. \textit{\textbf{Buttom Left}}: A state after 16 moves.  \textit{\textbf{Buttom Right}}: MCTS output after 15 moves, this will ensure that the best move will always be selected.\par
+Figure 1: MCTS outputs. \textit{\textbf{Top Left}}: A state of Othello game after 2 moves, red dots are valid moves. \textit{\textbf{Top Right}}: MCTS outputs for first 15 moves of each game, the Probability of move are sparse, this means the training model has 20\% chance to select the leftmost valid square or 44\% for the middle square, this ensures a diverse set of positions are encountered. \textit{\textbf{Buttom Left}}: A state after 16 moves.  \textit{\textbf{Buttom Right}}: MCTS output after 15 moves, this will ensure that the best move will always be selected.\par
 \end{small}
-
-\subsection{Training Pipeline}
+\addcontentsline{lof}{figure}{Figure 1: MCTS outputs}
+\begin{center}
+\includegraphics[width=0.75\textwidth]{MCTS.png}\par
+\end{center}
+\begin{small}
+Figure 2: AlphaGo Zero MCTS search. \textit{\textbf{a} Each simulation traverses the tree by selecting the edge with maximum action-value \(Q\), plus an upper conﬁdence bound \(U\) that depends on a stored prior probability \(P\) and visit count \(N\) for that edge (which is incremented once traversed). \textbf{b} The leaf node is expanded and the associated positions is evaluated by the neural network \((P(s,·),V (s)) = f_\theta(s)\); the vector of \(P\) values are stored in the outgoing edges from \(s\). \textbf{c} Action-values \(Q\) are updated to track the mean of all evaluations \(V\) in the subtree below that action. Once the search is complete, search probabilities \(\pi\) are returned, proportional to \(N^{1/\tau}\), where \(N\) is the visit count of each move from the root state and \(\tau\) is a parameter controlling temperature.}\par
+\end{small}
+\addcontentsline{lof}{figure}{Figure 2: AlphaGo Zero MCTS search}
+\clearpage
+\section{Training Pipeline}
 %\hspace{0.6cm}Our approach mostly based on AlphaGo Zero method. We used 8 × 8 board size for both Othello and Connect4 games. For better converge, we did not use weight regularisation which prevent overfitting and we use Adaptive Moment Estimation optimizer\cite{Adam} instead of stochastic gradient descent with momentum like AlphaGo and AlphaGo Zero. The neural network started training from completely random behaviour for 512 games in each iteration in total 50 iterations. We use AlphaGo Zero training approach, by updated parameters once after each iteration, rather than update every game like AlphaZero\cite{AlphaGoZero}\cite{AlphaZero}. Each move generated by 25 MCTS simulations, we did not apply Dirichlet noise.
 \hspace{0.6cm}\textit{\textbf{Optimisation}} Each neural network \(f_{\theta_i}\) is optimised on a single Tesla K80 GPU using Keras with TensorFlow backend. The batch-size is 4096. Each mini-batch of data is sampled uniformly at random from all positions from the most recent 10240 games(20 iterations) of self-play. Instead of stochastic gradient descent with momentum and learning rate annealing like AlphaGo and AlphaGo Zero, we optimized neural network parameters by Adaptive Moment Estimation\cite{Adam}. The learning rate is fixed at 0.001, \(\beta_1\) is 0.99 and \(\beta_2\) is 0.9.\par
-\textit{\textbf{Evaluator}} To ensure we always generate the best quality data, we evaluate each new neural network checkpoint against the current best network \(f_{\theta_∗}\) before using it for data generation. Each evaluation consists of 100 games, using an MCTS with 25 simulations to select each move, using an infinitesimal temperature \(\tau \to 0\) (i.e. we deterministically select the move with maximum visit count, to give the strongest possible play). If the new player wins by a margin of \(> 55\%\) (to avoid selecting on noise alone) then it becomes the best player \(\alpha_{\theta_∗}\), and is subsequently used for self-play generation, and also becomes the baseline for subsequent comparisons.\par
-\textit{\textbf{Self-Play}} In each iteration, the best current player \(\alpha_{\theta_∗}\) plays 512 games of self-play, using 25 simulations of MCTS to select each move. For the first 15 moves of each game, the temperature is set to \(\tau = 1\); this selects moves proportionally to their visit count in MCTS, and ensures a diverse set of positions are encountered. For the remainder of the game, an infinitesimal temperature is used, \(\tau = 0\).\par
-\subsection{Search Algorithm}
-\hspace{0.6cm}The Search Algorithm is almost identical to AlphaGo Zero\cite{AlphaGoZero}; we recapitulate here for completeness.\par 
+\textit{\textbf{Evaluator}} To ensure we always generate the best quality data, we evaluate each new neural network checkpoint against the current best network \(f_{\theta_\ast}\) before using it for data generation. Each evaluation consists of 100 games, using an MCTS with 25 simulations to select each move, using an infinitesimal temperature \(\tau \to 0\) (i.e. we deterministically select the move with maximum visit count, to give the strongest possible play). If the new player wins by a margin of \(> 55\%\) (to avoid selecting on noise alone) then it becomes the best player \(\alpha_{\theta_\ast}\), and is subsequently used for self-play generation, and also becomes the baseline for subsequent comparisons.\par
+\textit{\textbf{Self-Play}} In each iteration, the best current player \(\alpha_{\theta_\ast}\) plays 512 games of self-play, using 25 simulations of MCTS to select each move. For the first 15 moves of each game, the temperature is set to \(\tau = 1\); this selects moves proportionally to their visit count in MCTS, and ensures a diverse set of positions are encountered. For the remainder of the game, an infinitesimal temperature is used, \(\tau = 0\).\par
+\section{Search Algorithm}
+\hspace{0.6cm}The Search Algorithm is identical to AlphaGo Zero\cite{AlphaGoZero}; we recapitulate here for completeness.\par 
 Each node \(s\) in the search tree contains edges \((s, a)\) for all legal actions \(a \in A(s)\). Each edge stores a set of statistics, \[\{N(s, a), W(s, a), Q(s, a), P(s, a)\},\] where \(N(s, a)\) is the visit count, \(W(s, a)\) is the total action-value, \(Q(s, a)\) is the mean action-value, and \(P(s, a)\) is the prior probability of selecting that edge. \par
 \hspace{0.6cm}\textit{\textbf{Select}} The first in-tree phase of each simulation begins at the root node of the search tree, \(s_0\) , and finishes when the simulation reaches a leaf node \(s_L\) at time-step \(L\). At each of these time-steps, \(t < L\), an action is selected according to the statistics in the search tree, \(a_t =\) argmax \(Q(s_t, a) + U (s_t , a)\) , using a variant of the PUCT algorithm, 
 \begin{center}\(U(s,a) = c_{puct}P(s,a)\frac{\sqrt{\sum_b N(s,b)}}{1+N(s,a)} \)\end{center}\par
 where \(c_{puct}\) is a constant determining the level of exploration; this search control strategy initially prefers actions with high prior probability and low visit count, but asymptotically prefers actions with high action-value.\par
-\textit{\textbf{Expand and evaluate}} Positions in the queue are evaluated by the neural network using a mini-batch size of 1; the search thread is locked until evaluation completes. The leaf node is expanded and each edge (s L , a) is initialised to \({N(s_L, a) = 0, W(s_L , a) = 0, Q(s_L , a) = 0, P (s_L , a) = p_a }\); the value \(v\) is then backed up.\par
+\textit{\textbf{Expand and evaluate}} Positions in the queue are evaluated by the neural network using a mini-batch size of 1; the search thread is locked until evaluation completes. The leaf node is expanded and each edge (s L , a) is initialised to \(\{N(s_L, a) = 0, W(s_L , a) = 0, Q(s_L , a) = 0, P (s_L , a) = p_a \}\); the value \(v\) is then backed up.\par
 \textit{\textbf{Backup}} The edge statistics are updated in a backward pass through each step \(t \leq L\). The visit counts are incremented, \(N(s_t , a_t ) = N(s_t , a_t ) + 1)\), and the action-value is updated to the mean value, \(W(s_t , a_t ) = W(s_t , a_t) + v, Q(s_t , a_t) =\frac{W(s_t ,a_t)}{N(s_t ,a_t)}\).\par
 \textit{\textbf{Play}} At the end of the search AlphaGo Zero selects a move \(a\) to play in the root position \(s_0\), proportional to its exponentiated visit count, \(\pi(a|s_0 ) = N(s_0,a)^{1/\tau} /\sum_b N (s_0 , b)^{1/\tau}\), where \(\tau\) is a temperature parameter that controls the level of exploration. The search tree is reused at subsequent time-steps: the child node corresponding to the played action becomes the new root node; the subtree below this child is retained along with all its statistics, while the remainder of the tree is discarded.
-\subsection{Neural Network Architecture}
+\section{Neural Network Architecture}
 \hspace{0.6cm}The input to the neural network is a 8 × 8 × 2 image stack comprising 2 binary feature planes. The first plane \(X\) consist of binary values indicating the current player's stones position.The last plane \(Y\) represent the corresponding features for the opponent’s stones. These planes are concatenated together to give input features \(s_t = [X, Y]\).\par
 The input features \(s_t\) are processed by a residual tower that consists of a single convolutional block followed by 4 residual blocks\cite{ResNet}.\par
 The convolutional block applies the following modules (See Fig.3 for easier to understand):\par
@@ -144,20 +239,34 @@ The value head applies the following modules:\par
 6. A fully connected linear layer to a scalar\par
 7. A tanh non-linearity outputting a scalar in the range [−1, 1]\par
 The overall network depth is 8 parameterised layers for the residual tower, plus an additional 2 layers for the policy head and 3 layers for the value head.
-\subsection{Transfer Learning}
+\begin{center}
+\includegraphics[width=0.75\textwidth]{ResNet.png}\par
+\begin{small}
+Figure 3: Network Architecture.\par
+\end{small}
+\addcontentsline{lof}{figure}{Figure 3: Network Architecture}
+\end{center}
+\begin{center}
+\includegraphics[width=0.75\textwidth]{SharedNet.png}\par
+\begin{small}
+Figure 4: Shared Learning Network Architecture.\par
+\end{small}
+\end{center}
+\addcontentsline{lof}{figure}{Figure 4: Shared Learning Network Architecture}
+\clearpage
+\section{Transfer Learning}
 \hspace{0.6cm} We subsequently applied Transfer Learning to the Connect4 games trained neural network, by re-initialize parameters of the probabilities \(\theta_\rho\) and value \(\theta_\upsilon\) output layers while using the same feature extractor layers, the new move probabilities and value would became \(p = f_{\theta_\rho}(f_\theta(s))\) and \(v = f_{\theta_\upsilon}(f_\theta(s))\) respectively. \par
 The transferred neural network is trained for Othello games by the same procedure as the base network for another 25600 games. We performed 2 difference networks setup for transferred training, one trained the whole network just like the base model, another one is by fixed parameters of feature extractor layers and updates only new initialized output layers.\par
 We evaluated the transferred models using an internal tournament against fully randomize initializing model. The internal tournament consisting 2 part, for 3 and 25 MCTS simulations respectively. As the matter of time limit, we can only compare Othello game, trained from scratch and transferred from Connect4 game one each.
-\subsection{Shared Learning}
+\section{Shared Learning}
 \hspace{0.6cm} We also experimented Shared Learning. By using same feature extractor layers \(f_{\theta_\gamma}\) but different input \(\theta_\iota\) and output\((\theta_\rho, \theta_\upsilon)\)(See Figure 4). Trained both games simultaneously to experiment that, is it possible to make a Neural Network that can do multiple tasks.\par
-\textit{\textbf{Training}} We applied sharing method for Othello and Connect4 games. Each game plays 512 games per iteration. The parameters \(\theta\) are updated using most recent 10240 games sample from one game(take it as Othello) and then updated using another game(take it as Connect4). The order of update is randomized to prevent bias. Other procedures are identical to the prior experiment. We evaluate each new neural network checkpoint against the current best network \(f_{\theta_∗}\) before using it for data generation. The neural network \(f_{\theta_i}\) is evaluated by the performance of an MCTS search \(\alpha_{\theta_i}\) that uses \(f_{\theta_i}\) to evaluate leaf positions and prior probabilities. Each evaluation consists of 50 games for each game, in the total of 100, using an MCTS with 25 simulations to select each move. If the new player wins by a margin of \(> 55\%\) for all result, and \(> 48\%\) for each game(to avoid the network become good at on game but bad at another), then it becomes the best player \(\alpha_{\theta_∗}\), and is subsequently used for self-play generation, and also becomes the baseline for subsequent comparisons.\par
+\textit{\textbf{Training}} We applied sharing method for Othello and Connect4 games. Each game plays 512 games per iteration. The parameters \(\theta\) are updated using most recent 10240 games sample from one game(take it as Othello) and then updated using another game(take it as Connect4). The order of update is randomized to prevent bias. Other procedures are identical to the prior experiment. We evaluate each new neural network checkpoint against the current best network \(f_{\theta_\ast}\) before using it for data generation. The neural network \(f_{\theta_i}\) is evaluated by the performance of an MCTS search \(\alpha_{\theta_i}\) that uses \(f_{\theta_i}\) to evaluate leaf positions and prior probabilities. Each evaluation consists of 50 games for each game, in the total of 100, using an MCTS with 25 simulations to select each move. If the new player wins by a margin of \(> 55\%\) for all result, and \(> 48\%\) for each game(to avoid the network become good at on game but bad at another), then it becomes the best player \(\alpha_{\theta_\ast}\), and is subsequently used for self-play generation, and also becomes the baseline for subsequent comparisons.\par
 \textit{\textbf{Evaluating}} We evaluated the model using an internal tournament against fully randomize initializing model from the prior experiment. The internal tournaments take matches for every version of each game. As a matter of time, we only finished evaluating the Othello models.
 
 \clearpage
-\section{Result}
-\subsection{Time Consumation}
-\hspace{0.6cm} For the 4 blocks model, each iteration of 512 games takes about 5-6 hours for self-play and around 1 hour for evaluation, more than 300 hours for 50 iterations, around 2 weeks. And the 8 blocks model use twice time of this, at around 600 hours, almost a month. So we can only be trained once per each experiment.\par
-Here is the server's spec.
+\chapter{Result}\thispagestyle{fancy}
+\section{Time Consumation}
+\hspace{0.6cm} For the 4 blocks model, each iteration of 512 games takes about 5-6 hours for self-play and around 1 hour for evaluation, more than 300 hours for 50 iterations, around 2 weeks. And the 8 blocks model use twice time of this, at around 600 hours, almost a month. So we can only be trained once per each experiment. Here is the server's spec.
 {
 \begin{center}
 \begin{tabular}{ |c|c| }
@@ -173,9 +282,10 @@ RAM & 512GB DDR3  \\
 Table 1: The Train Server specification.
 \end{small}
 \end{center}
+\addcontentsline{lot}{table}{Table 1: The Train Server specification}
 }
-\subsection{Transfered Othello}
-\hspace{0.6cm}The Transfer Learning experimental result is very disappointing, as the Transferred model is totally outperformed by the Fully Random Initialize(Scratch) model. The evaluating result is shown in Table 2.
+\section{Transferred Othello}
+\hspace{0.6cm}The Transfer Learning experimental result is not as expected, as the Transferred model is totally outperformed by the Fully Random Initialize(Scratch) model. The evaluating result is shown in Table 2. Match history between latest models of both method is shown in Figure 6-9.
 {
 \begin{center}
 \begin{tabular}{ |c|c|c|c| }
@@ -186,25 +296,81 @@ MCTS sims & Scratch & Transferred \\
 \hline
 25        & 89      & 11           \\
 \hline
+           & 174     & 26           \\
+\hline
 \end{tabular}\par
 \begin{small}
 Table 2: \textbf{Match result}. Winning score of the internal tournament for scratch and transferred models.
 \end{small}
 \end{center}
+\addcontentsline{lot}{table}{Table 2: Match result}
 }
-\subsection{Shared Learning}
-\hspace{0.6cm}The Shared Learning experimental result in an unexpected way. The early versions of Shared model are outperformed Normal model in every version but the later versions are worse. Figure 5 show win percentage of Shared model against normal model.
+\section{Shared Learning}
+\hspace{0.6cm}The Shared Learning experimental result in a strange way. The early versions of the Shared Learning have won against the normal model. The most notable is the third version of Shared Learning defeated every version of the normal model in the total of 1001 by 1400. All results are shown in Figure 5. And match history example is shown in Figure 10 and Figure 11.
 \begin{center}
-%\includegraphics[width=0.75\textwidth]{comparetable3.png} 
-\includegraphics[width=0.75\textwidth]{comparetable25.png}\par
-\begin{small}
-Figure 5: Shared model win percentage. Blue color means Shared model is better, red means worse.
-\end{small}
+\includegraphics[width=0.7\textwidth]{Fig5.png}\par
 \end{center}
+\begin{small}
+Figure 5: The detailed win percentage of the Shared Learning. The numbers display how many games the Shared Learning win, for easy to compare the blue color means Shared model is better and the red means it is worse.\par
+\end{small}
+\addcontentsline{lof}{figure}{Figure 5: The detailed win percentage of the Shared Learning}
 \clearpage
-\section{Conclusions and Recommendations}
+
+\begin{center}
+\includegraphics[width=1.0\textwidth]{N34-C34-1.png}\par
+\end{center}
+\begin{small}
+Figure 6: Normal model version 34 vs Transferred Learning version 34. Normal model plays black.\par
+\end{small}
+\addcontentsline{lof}{figure}{Figure 6: Normal model version 34 vs Transferred Learning version 34}
+\clearpage
+
+\begin{center}
+\includegraphics[width=1.0\textwidth]{N34-C34-2.png}\par
+\end{center}
+\begin{small}
+Figure 7: Normal model version 34 vs Transferred Learning version 34.\par
+\end{small}
+\addcontentsline{lof}{figure}{Figure 7: Normal model version 34 vs Transferred Learning version 34}
+\clearpage
+\begin{center}
+\includegraphics[width=1.0\textwidth]{C34-N34-1.png}\par
+\end{center}
+\begin{small}
+Figure 8: Transferred Learning version 34 vs Normal model version 34. Transferred Learning plays black.\par
+\end{small}
+\addcontentsline{lof}{figure}{Figure 8: Transferred Learning version 34 vs Normal model version 34}
+\clearpage
+
+\begin{center}
+\includegraphics[width=1.0\textwidth]{C34-N34-2.png}\par
+\end{center}
+\begin{small}
+Figure 9: Transferred Learning version 34 vs Normal model version 34. If the normal model choose the top-left corner at move 56 or 58 it would win, though.\par
+\end{small}
+\addcontentsline{lof}{figure}{Figure 9: Transferred Learning version 34 vs Normal model version 34}
+\clearpage
+
+\begin{center}
+\includegraphics[width=1.0\textwidth]{N2-S47-1.png}\par
+\end{center}
+\begin{small}
+Figure 10: Normal model 2nd version vs Shared Learning 47th version. Normal model plays black.\par
+\end{small}
+\addcontentsline{lof}{figure}{Figure 10: Normal model 2nd version vs Shared Learning 47th version}
+\clearpage
+
+\begin{center}
+\includegraphics[width=1.0\textwidth]{N2-S47-2.png}\par
+\end{center}
+\begin{small}
+Figure 11: Continue, Normal model 2nd version vs Shared Learning 47th version. This game the shared Learning always has more piece than the Normal model, but the result still in favor of the black side(which moves first).\par
+\end{small}
+\addcontentsline{lof}{figure}{Figure 11: Continue, Normal model 2nd version vs Shared Learning 47th version}
+\clearpage
+\chapter{Conclusions and Recommendations}\thispagestyle{fancy}
 \hspace{0.6cm}As I have experienced it myself, Reinforcement Learning needs a large amount of resource to make it done. As I have mentioned in Sec.4 that it took couple weeks just to make a small model(4 blocks/256 kernels) learn an easy game(Othello, which normally has only 3-6 valid moves per state or 8x8 Connect4 which has exactly 8). It's would difficult to train an RL model with personal computer since you would need to run at full GPU performance without any rest for many days or else, it would take even more time.\par
-As for the experimental, there are some noticeable methods that have been used in the original AlphaGo Zero but I choose not to use them. First,  adding Dirichlet noise to ensures that all moves may be tried. Second, I use Adam optimizer instead of SGD(See \cite{AlphaGoZero} Self-Play Training Pipeline section for more detail). I believe that they might make the model's convergence slower and want to try both using and not using them, but since only one experiment took more time than expected, I did not have a chance to prove my presumption. And the third, multi-thread MCTS search(Mentioned in \cite{AlphaGoZero}: Search Algorithm). I tried, but it bugged. And since it is multi-threaded tracking the error was really difficult so I gave up. Since the self-play process consumes only 40-70\% of GPU, multi-threading should speed up this process(I forget to capture GPU usage of the self-play so I did not mention this earlier)\par
+As for the experimental, there are some noticeable methods that have been used in the original AlphaGo Zero but I choose not to use them. First,  adding Dirichlet noise to ensures that all moves may be tried. Second, I use Adam optimizer instead of SGD(See \cite{AlphaGoZero} Self-Play Training Pipeline section for more detail). I believe that they might make the model's convergence slower and want to try both using and not using them, but since only one experiment took more time than expected, I did not have a chance to prove my presumption. And the third, multi-thread MCTS search(Mentioned in \cite{AlphaGoZero}: Search Algorithm). I tried, but it bugged. And since it is multi-threaded tracking the error was really difficult so I gave up. Since the self-play process consumes only 40-70\% of GPU, multi-threading should speed up this process(I forget to capture GPU usage of the self-play so I did not mention this earlier).\par
 
 \clearpage
 \bibliographystyle{ieeetr}
